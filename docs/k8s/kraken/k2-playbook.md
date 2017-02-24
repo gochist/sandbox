@@ -1,5 +1,14 @@
 ## 쿠버네티스 클러스터 생성 워크플로우 요약
 
+
+1. 설정파일을 통해 각 노드에 사용할 cloud-init 파일과 terraform 모델 생성
+2. 생성된 terraform 모델로 AWS에 자원배포
+3. 배포된 VM 부팅 시 cloud-init 으로 노드 단위 필요한 컴포넌트 설치 및 설정
+3. 클러스터 사용자 등록, RBAC 설정
+4. 오버레이 네트워크 설치
+5. 기타 인증 등 서비스 설치
+
+## Ansible Playbook Tasks 요약
 ### kraken.config
 설정파일을 읽어들입니다. 정의되지 않은 경우 기본값을 사용합니다. 클러스터 이름이나 토큰에 사용할 난수를 생성합니다.
 
@@ -34,7 +43,6 @@ flannel 네트워크 플러그인을 설치합니다.
 클러스터 서비스, repo, namespace 를 설정합니다. dex 서비스를 생성합니다. helm 서비스를 생성합니다. 차트를 설치합니다.
 
 ## 쿠버네티스 클러스터 생성 워크플로우 상세
-
 ### kraken.config
 1. Check if configuration file exists
 1. Include configuration variables from defaults file
