@@ -1,5 +1,21 @@
 ## 쿠버네티스 클러스터 생성 워크플로우 요약
 
+1. ClusterOps가 Kraken 설정파일 작성
+2. ClusterOps가 Kraken Up 명령 수행
+3. Kraken이 설정파일에 기술된 대로 AWS에 쿠버네티스 클러스터가 생성함
+    1. 설정파일 로드
+    2. Cloud-Init 리소스 생성
+    3. Terraform 템플릿 생성
+    4. Terraform 으로 AWS 자원 생성
+
+* Ansible: Chef, Puppet 등과 유사
+* Terraform: CloudFormation, Heat 등과 유사
+* Cloud-Init: 클라우드 인스턴스의 초기 세팅을 해주는 defacto 표준 패키지  
+
+    
+1. 전체 노드에 공통 적용할 cloud-init 리소스를 생성합니다. 해당 리소스는 네트워크 환경변수, 인증서, OS 업데이트, 볼륨 마운트와 같은 내용을 포함합니다.
+1. etcd 노드풀, master 노드풀, worker 노드풀에서 각각 적용할 cloud-init 리소스를 생성합니다.
+1. 위 과정에서 생성된 cloud-init 리소스를 하나의 cloud-config 파일로 만들어줍니다.
 
 1. 설정파일을 통해 각 노드에 사용할 cloud-init 파일과 terraform 모델 생성
 2. 생성된 terraform 모델로 AWS에 자원배포
