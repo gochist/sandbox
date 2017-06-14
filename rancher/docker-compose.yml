@@ -1,0 +1,23 @@
+prometheus-rancher-exporter:
+  image: infinityworks/prometheus-rancher-exporter:latest
+  environment:
+    - CATTLE_ACCESS_KEY="12550C1A8F9A2B30B1C5"
+    - CATTLE_SECRET_KEY="5B5vvtahKx58MCu76evvqgo4CcDnSSfZVbhVGxdY"
+    - CATTLE_URL=http://10.11.22.2:8080/v2-beta
+    - HIDE_SYS=true
+  ports:
+    - 9173:9173
+prometheus:
+  image: prom/prometheus:v1.7.1
+  volumes:
+    - "./prometheus:/etc/prometheus/"
+  ports:
+    - 9090:9090
+  links:
+    - alertmanager
+alertmanager:
+  image: prom/alertmanager:v0.7.1
+grafana:
+  image: grafana/grafana:4.3.2
+  ports:
+    - 3000:3000
