@@ -27,7 +27,9 @@ scrape_configs:
     static_configs:
       - targets:
         - '10.11.22.2:9100'
-
+        - '10.11.22.82:9100'
+        - '10.11.22.109:9100'
+        - '10.11.22.154:9100'
   - job_name: 'rancher'
     static_configs:
       - targets:
