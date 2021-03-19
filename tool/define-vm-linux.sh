@@ -21,6 +21,7 @@ if [[ ! "$#" -eq 2 ]]; then
     echo "images:"
     echo "  - xenial (ubuntu 16.04)"
     echo "  - bionic (ubuntu 18.04)"
+    echo "  - focal  (ubuntu 20.04)"
     echo "  - coreos"
     exit 1
 else
@@ -30,6 +31,8 @@ else
     if [[ ${IMAGE_NAME} == "xenial" ]]; then
         IMAGE_SOURCE_PATH=${IMAGE_XENIAL_PATH}
     elif [[ ${IMAGE_NAME} == "bionic" ]]; then
+        IMAGE_SOURCE_PATH=${IMAGE_BIONIC_PATH}
+    elif [[ ${IMAGE_NAME} == "focal" ]]; then
         IMAGE_SOURCE_PATH=${IMAGE_BIONIC_PATH}
     elif [[ ${IMAGE_NAME} == "coreos" ]]; then
         IMAGE_SOURCE_PATH=${IMAGE_COREOS_PATH}
