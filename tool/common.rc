@@ -18,5 +18,6 @@ SSH_KEY=$(cat /home/june/.ssh/id_rsa.pub)
 IMAGE_PATH=/var/lib/libvirt/images
 IMAGE_XENIAL_PATH=${IMAGE_PATH}/xenial-image.qcow2
 IMAGE_BIONIC_PATH=${IMAGE_PATH}/bionic-image.qcow2
+IMAGE_FOCAL_PATH=${IMAGE_PATH}/focal-image.qcow2
 IMAGE_COREOS_PATH=${IMAGE_PATH}/coreos-image.qcow2
 IMAGE_USERDATA_PATH=${IMAGE_PATH}/my-user-data.img
