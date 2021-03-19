@@ -19,9 +19,9 @@ if [[ ! "$#" -eq 2 ]]; then
     echo "Usage: ${0} image domain_name"
     echo "ex) sudo bash ${0} xenial test"
     echo "images:"
-    echo "  - xenial (ubuntu 16.04)"
-    echo "  - bionic (ubuntu 18.04)"
     echo "  - focal  (ubuntu 20.04)"
+    echo "  - bionic (ubuntu 18.04)"
+    echo "  - xenial (ubuntu 16.04)"
     echo "  - coreos"
     exit 1
 else
@@ -33,7 +33,7 @@ else
     elif [[ ${IMAGE_NAME} == "bionic" ]]; then
         IMAGE_SOURCE_PATH=${IMAGE_BIONIC_PATH}
     elif [[ ${IMAGE_NAME} == "focal" ]]; then
-        IMAGE_SOURCE_PATH=${IMAGE_BIONIC_PATH}
+        IMAGE_SOURCE_PATH=${IMAGE_FOCAL_PATH}
     elif [[ ${IMAGE_NAME} == "coreos" ]]; then
         IMAGE_SOURCE_PATH=${IMAGE_COREOS_PATH}
     else
