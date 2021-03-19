@@ -5,7 +5,7 @@ source common.rc
 CODE_NAME=focal
 IMAGE_NAME=${CODE_NAME}-server-cloudimg-amd64.img
 IMAGE_URL=https://cloud-images.ubuntu.com/${CODE_NAME}/current/${CODE_NAME}-server-cloudimg-amd64.img
-IMAGE_PATH=${IMAGE_BIONIC_PATH}
+IMAGE_PATH=${IMAGE_FOCAL_PATH}
 LIBVIRT_IMAGE_PATH=/var/lib/libvirt/images
 LOCAL_IMAGE_PATH=${LIBVIRT_IMAGE_PATH}/${IMAGE_NAME}
 
