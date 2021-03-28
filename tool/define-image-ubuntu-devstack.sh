@@ -64,6 +64,12 @@ write_files:
     DATABASE_PASSWORD=password
     RABBIT_PASSWORD=password
     SERVICE_PASSWORD=password
+
+    [[post-config|\$NOVA_CONF]]
+    [DEFAULT]
+    instance_usage_audit=True
+    instance_usage_audit_period=hour
+    notify_on_state_change=vm_and_task_state
   path: /home/stack/local.conf
   permissions: 0644
 - content: |
