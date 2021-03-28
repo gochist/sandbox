@@ -19,6 +19,7 @@ if [[ ! "$#" -eq 2 ]]; then
     echo "Usage: ${0} image domain_name"
     echo "ex) sudo bash ${0} xenial test"
     echo "images:"
+    echo "  - devstack (ubuntu 20.04)"
     echo "  - focal  (ubuntu 20.04)"
     echo "  - bionic (ubuntu 18.04)"
     echo "  - xenial (ubuntu 16.04)"
@@ -34,6 +35,9 @@ else
         IMAGE_SOURCE_PATH=${IMAGE_BIONIC_PATH}
     elif [[ ${IMAGE_NAME} == "focal" ]]; then
         IMAGE_SOURCE_PATH=${IMAGE_FOCAL_PATH}
+    elif [[ ${IMAGE_NAME} == "devstack" ]]; then
+        IMAGE_SOURCE_PATH=${IMAGE_FOCAL_PATH}
+        IMAGE_USERDATA_PATH=${DEVSTACK_IMAGE_USERDATA_PATH}
     elif [[ ${IMAGE_NAME} == "coreos" ]]; then
         IMAGE_SOURCE_PATH=${IMAGE_COREOS_PATH}
     else
@@ -70,8 +74,8 @@ VIRSH_DOMAIN_XML=$(mktemp /tmp/virsh-vm.XXXXXXXXXXX)
 cat > ${VIRSH_DOMAIN_XML} << EOF
 <domain type='kvm' xmlns:qemu='http://libvirt.org/schemas/domain/qemu/1.0'>
     <name>${PREFIX}-${DOMAIN_NAME}</name>
-    <memory unit='GB'>1</memory>
-    <vcpu>1</vcpu>
+    <memory unit='GB'>8</memory>
+    <vcpu>2</vcpu>
     <cpu mode='host-passthrough'>
         <!--<feature policy='require' name='hyperv' />-->
     </cpu>
